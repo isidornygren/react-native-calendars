@@ -12,6 +12,7 @@ class CalendarHeader extends Component {
     hideArrows: PropTypes.bool,
     month: PropTypes.instanceOf(XDate),
     addMonth: PropTypes.func,
+    titlePress: PropTypes.func,
     showIndicator: PropTypes.bool,
     firstDay: PropTypes.number,
     renderArrow: PropTypes.func,
@@ -22,6 +23,7 @@ class CalendarHeader extends Component {
     this.style = styleConstructor(props.theme);
     this.addMonth = this.addMonth.bind(this);
     this.substractMonth = this.substractMonth.bind(this);
+    this.titlePress = this.titlePress.bind(this);
   }
 
   addMonth() {
