@@ -51,6 +51,8 @@ class Calendar extends Component {
 
     // Handler which gets executed on day press. Default = undefined
     onDayPress: PropTypes.func,
+    // Handler which gets executed on title press. Default = undefined
+    titlePress: PropTypes.func,
     // Handler which gets executed when visible month changes in calendar. Default = undefined
     onMonthChange: PropTypes.func,
     onVisibleMonthsChange: PropTypes.func,
@@ -76,6 +78,7 @@ class Calendar extends Component {
     this.updateMonth = this.updateMonth.bind(this);
     this.addMonth = this.addMonth.bind(this);
     this.isSelected = this.isSelected.bind(this);
+    this.titlePress = this.titlePress.bind(this);
     this.shouldComponentUpdate = shouldComponentUpdate;
   }
 
@@ -120,6 +123,12 @@ class Calendar extends Component {
 
   addMonth(count) {
     this.updateMonth(this.state.currentMonth.clone().addMonths(count, true));
+  }
+
+  titlePress () {
+    if (this.props.titlePress) {
+      this.props.titlePress();
+    }
   }
 
   isSelected(day) {

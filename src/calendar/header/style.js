@@ -21,6 +21,9 @@ export default function(theme={}) {
     arrow: {
       padding: 10
     },
+    // Style of the title in the calendar
+    titleButton: {
+    },
     arrowImage: {
       ...Platform.select({
         ios: {

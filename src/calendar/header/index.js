@@ -32,6 +32,10 @@ class CalendarHeader extends Component {
     this.props.addMonth(-1);
   }
 
+  titlePress() {
+    this.props.titlePress();
+  }
+
   shouldComponentUpdate(nextProps) {
     if (
       nextProps.month.toString('yyyy MM') !==
@@ -48,6 +52,7 @@ class CalendarHeader extends Component {
   render() {
     let leftArrow = <View />;
     let rightArrow = <View />;
+    let title = <View />;
     let weekDaysNames = weekDayNames(this.props.firstDay);
     if (!this.props.hideArrows) {
       leftArrow = (
@@ -74,6 +79,15 @@ class CalendarHeader extends Component {
         </TouchableOpacity>
       );
     }
+    if(!this.props.hideTitle) {
+      title = (
+        <TouchableOpacity onPress={this.titlePress} style={this.style.titleButton}>
+          <Text style={this.style.monthText}>
+            {this.props.month.toString(this.props.monthFormat ? this.props.monthFormat : 'MMMM yyyy')}
+          </Text>
+        </TouchableOpacity>
+      )
+    }
     let indicator;
     if (this.props.showIndicator) {
       indicator = <ActivityIndicator />;
@@ -83,9 +97,7 @@ class CalendarHeader extends Component {
         <View style={this.style.header}>
           {leftArrow}
           <View style={{ flexDirection: 'row' }}>
-            <Text style={this.style.monthText}>
-              {this.props.month.toString(this.props.monthFormat ? this.props.monthFormat : 'MMMM yyyy')}
-            </Text>
+            {title}
             {indicator}
           </View>
           {rightArrow}
