@@ -84,6 +84,8 @@ LocaleConfig.defaultLocale = 'fr';
   onDayPress={(day) => {console.log('selected day', day)}}
   // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
   monthFormat={'yyyy MM'}
+  // Handler that gets executed when the user presses the title
+  titlePress={() => {console.log('pressed title')}}
   // Handler which gets executed when visible month changes in calendar. Default = undefined
   onMonthChange={(month) => {console.log('month changed', month)}}
   // Hide month navigation arrows. Default = false
